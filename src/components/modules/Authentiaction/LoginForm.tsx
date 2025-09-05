@@ -27,9 +27,13 @@ export function LoginForm({
     try {
       const res = await login(data).unwrap();
       console.log(res);
-    } catch (err) {
+    } catch (err:any) {
+      console.log(err);
+      if(err.data.message === 'Password does not match'){
+        toast.error('Inavalid creditials')
+      }
 
-      if (err.status === 401) {
+      if (err.data.message === 'User is not verified') {
         toast.error("Your account is not verified");
         navigate("/verify",{state:data.email})
       }
