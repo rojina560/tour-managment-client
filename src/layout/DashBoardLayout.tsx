@@ -1,9 +1,10 @@
+import { Outlet } from "react-router";
 
 
 const DashBoardLayout = () => {
     return (
         <div>
-            this is dashborad
+            <Outlet></Outlet>
         </div>
     );
 };
