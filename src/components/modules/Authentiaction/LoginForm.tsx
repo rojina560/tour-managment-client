@@ -8,6 +8,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import config from "@/config";
 import { cn } from "@/lib/utils";
 import { useLoginMutation } from "@/redux/features/auth/auth.api";
 
@@ -26,6 +27,10 @@ export function LoginForm({
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
       const res = await login(data).unwrap();
+      if(res.success){
+        toast.success('Looged in successfully');
+        navigate('/')
+      }
       console.log(res);
     } catch (err:any) {
       console.log(err);
@@ -99,8 +104,9 @@ export function LoginForm({
             Or continue with
           </span>
         </div>
-
+         {/* https://backend-ph-tour-management-system.vercel.app/api/v1/auth/google*/}
         <Button
+        onClick={()=> window.open(`${config.baseUrl}/auth/google`)}
           type="button"
           variant="outline"
           className="w-full cursor-pointer"
