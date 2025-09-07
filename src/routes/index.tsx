@@ -8,8 +8,11 @@ import Analytics from '@/pages/admin/Analytics'
 import Login from '@/pages/Login'
 import Registration from '@/pages/Registration'
 import Verify from '@/pages/verify'
+import { generatedRoutes } from '@/utils/GeneratedRoutes'
 
 import {createBrowserRouter} from 'react-router'
+import { adminSidebarItems } from './AdminSidebar'
+import { userSidebarItems } from './UserSidebar'
 export const  router = createBrowserRouter([{
    Component:App,
    path:'/',
@@ -21,20 +24,13 @@ export const  router = createBrowserRouter([{
     {
       Component:DashBoardLayout,
       path: '/admin',
-      children:[{
-        Component: Analytics,
-        path:'analytics'
-
-      }]
+      children:[...generatedRoutes(adminSidebarItems)]
     },
     {
       Component:DashBoardLayout,
       path: '/user',
       children:[
-        {
-          Component:Analytics,
-          path:'bookings'
-        }
+        ...generatedRoutes(userSidebarItems)
       ]
     },
     {

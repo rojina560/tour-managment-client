@@ -3,7 +3,7 @@
 const Analytics = () => {
     return (
         <div>
-            
+            this is analytics component
         </div>
     );
 };

@@ -3,7 +3,7 @@
 const Booking = () => {
     return (
         <div>
-            
+           this is booking
         </div>
     );
 };
